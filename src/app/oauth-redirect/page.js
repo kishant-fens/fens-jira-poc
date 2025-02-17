@@ -1,6 +1,6 @@
 "use client";
 import { useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
 
 export default function OAuthRedirect() {
   const searchParams = useSearchParams();
@@ -34,5 +34,9 @@ export default function OAuthRedirect() {
     }
   }, [searchParams]);
 
-  return <div>Processing authorization...</div>;
+  return (
+    <Suspense>
+      <div>Processing authorization...</div>
+    </Suspense>
+  );
 }
